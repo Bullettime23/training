@@ -1,0 +1,21 @@
+{
+	"name": "training",
+	"version": "1.0.0",
+	"description": "This is a Training sessions inspired by Ancle Bob. Inspired by the martial arts, this excercises should be repeated regularly, to provide a mechanical memory in writing the code, improve coding skills and shortcuts usage. Lets see where it goes! ;-)",
+	"main": "index.js",
+	"type": "module",
+	"scripts": {
+		"test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
+	},
+	"keywords": [
+		"kata",
+		"unckle",
+		"bob",
+		"excercises"
+	],
+	"author": "Lev Medvedev",
+	"license": "ISC",
+	"devDependencies": {
+		"jest": "^29.7.0"
+	}
+}
