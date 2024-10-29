@@ -7,40 +7,39 @@ beforeEach(() => {
 });
 
 describe('Bowling game', () => {
-	test('No pins down - score 0', () => {
+	test('Hit nothing', () => {
 		rollMany(20, 0);
-		expect(game.getScore()).toEqual(0);
+		expect(game.getScore()).toBe(0);
 	});
 
-	test('1 pin each roll - score 20', () => {
+	test('All ones', () => {
 		rollMany(20, 1);
-
-		expect(game.getScore()).toEqual(20);
+		expect(game.getScore()).toBe(20);
 	});
 
-	test('A single spare', () => {
+	test('One spare', () => {
 		rollSpare();
 		game.roll(3);
 		rollMany(17, 0);
-		expect(game.getScore()).toEqual(16);
+		expect(game.getScore()).toBe(16);
 	});
 
-	test('A single strike', () => {
+	test('One strike', () => {
 		rollStrike();
 		game.roll(3);
 		game.roll(4);
 		rollMany(16, 0);
-		expect(game.getScore()).toEqual(24);
+		expect(game.getScore()).toBe(24);
 	});
 
-	test('A perfect game', () => {
+	test('Perfect game', () => {
 		rollMany(12, 10);
-		expect(game.getScore()).toEqual(300);
+		expect(game.getScore()).toBe(300);
 	});
 });
 
 function rollMany(rolls, pins) {
-	for (let i = 0; i < rolls; i++) {
+	for (let rollIndex = 0; rollIndex < rolls; rollIndex++) {
 		game.roll(pins);
 	}
 }
