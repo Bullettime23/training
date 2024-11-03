@@ -1,12 +1,12 @@
 export class Game {
-	#rolls = {};
-	#currentRoll = 0;
+	#rolls = [];
 
 	roll(pins) {
-		this.#rolls[this.#currentRoll++] = pins;
+		this.#rolls.push(pins);
 	}
 
 	getScore() {
+		console.log();
 		let score = 0;
 		let frameIndex = 0;
 		for (let frame = 0; frame < 10; frame++) {
@@ -20,7 +20,7 @@ export class Game {
 				frameIndex += 2;
 				continue;
 			}
-			score += this.#sumOfBallsInFrame(frameIndex);
+			score += this.#pinsInFrame(frameIndex);
 			frameIndex += 2;
 		}
 		return score;
@@ -28,6 +28,10 @@ export class Game {
 
 	#isSpare(frameIndex) {
 		return this.#rolls[frameIndex] + this.#rolls[frameIndex + 1] === 10;
+	}
+
+	#spareBonus(frameIndex) {
+		return this.#rolls[frameIndex + 2];
 	}
 
 	#isStrike(frameIndex) {
@@ -38,11 +42,7 @@ export class Game {
 		return this.#rolls[frameIndex + 1] + this.#rolls[frameIndex + 2];
 	}
 
-	#spareBonus(frameIndex) {
-		return this.#rolls[frameIndex + 2];
-	}
-
-	#sumOfBallsInFrame(frameIndex) {
+	#pinsInFrame(frameIndex) {
 		return this.#rolls[frameIndex] + this.#rolls[frameIndex + 1];
 	}
 }
